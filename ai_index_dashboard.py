@@ -11,7 +11,7 @@ df = pd.read_csv("group1.csv")
 
 st.title("Global AI Index Dashboard")
 st.markdown("""
-This dashboard analyzes AI readiness across 62 countries using various metrics like Talent, Infrastructure, Research, Development, Government Strategy, and Commercial Use.  
+This dashboard analyzes AI readiness across 62 countries using various metrics like Talent, Infrastructure, Research, Development, Government Strategy, and Commercial Use.
 Use the filters below to dynamically explore the data by selecting one or more Regions and a specific Income Group.
 """)
 
@@ -27,10 +27,10 @@ tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Visualizations", "Data Table", "C
 with tab1:
     st.header("Project Overview and Summary")
     st.markdown("""
-    This dashboard builds on Phase II of the project, which included **seven core visualizations**.  
+    This dashboard builds on Phase II of the project, which included **seven core visualizations**.
     In this final version, we added **two new charts** to expand our analysis:
-    - Development Score by Region  
-    - Talent Score vs Total Score  
+    - Development Score by Region
+    - Talent Score vs Total Score
 
     The filters allow you to select one or more regions and an income group. All charts respond to your selection dynamically.
     """)
@@ -55,9 +55,9 @@ with tab2:
     ax1.set_title("Total AI Score Distribution")
     st.pyplot(fig1)
     st.markdown("""
-    **Insight:**  
-    This histogram helps us understand the distribution of overall readiness across selected countries.  
-    Most countries fall below the 60 mark, suggesting that only a minority are significantly prepared for AI integration.  
+    **Insight:**
+    This histogram helps us understand the distribution of overall readiness across selected countries.
+    Most countries fall below the 60 mark, suggesting that only a minority are significantly prepared for AI integration.
     The tail on the right indicates a few countries with very high scores.
     """)
 
@@ -65,21 +65,22 @@ with tab2:
     fig2, ax2 = plt.subplots()
     sns.scatterplot(data=filtered_df, x='Government Strategy', y='Total score', hue='Country', ax=ax2)
     ax2.set_title("Government Strategy vs Total Score")
+    ax2.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)  # ← تم نقل التوضيح خارج الرسم
     st.pyplot(fig2)
     st.markdown("""
-    **Insight:**  
-    There is a positive correlation: countries that score higher in AI government strategy also tend to score higher in overall AI readiness.  
+    *Insight:*
+    There is a positive correlation: countries that score higher in AI government strategy also tend to score higher in overall AI readiness.
     However, a few outliers show strong strategies without corresponding execution—indicating the need to bridge policy with action.
-    """)
-
+    """)
+    
     st.subheader("3. Commercial AI Use by Income Group")
     fig3, ax3 = plt.subplots()
     sns.barplot(data=region_data(df), x='Income group', y='Commercial', estimator='mean', ci=None, ax=ax3)
     ax3.set_title("Commercial Use by Income Level")
     st.pyplot(fig3)
     st.markdown("""
-    **Insight:**  
-    High-income countries tend to lead in commercial AI use due to stronger private sector adoption.  
+    **Insight:**
+    High-income countries tend to lead in commercial AI use due to stronger private sector adoption.
     Interestingly, some upper-middle income countries are catching up, especially in Asia and Latin America, showing market-driven AI integration.
     """)
 
@@ -89,8 +90,8 @@ with tab2:
     ax4.set_title("AI Readiness by Region")
     st.pyplot(fig4)
     st.markdown("""
-    **Insight:**  
-    This visualization shows median, spread, and outliers in AI readiness by region.  
+    **Insight:**
+    This visualization shows median, spread, and outliers in AI readiness by region.
     Asia-Pacific and Europe appear more consistent and higher-performing, while Africa and the Middle East have a broader variance and lower median.
     """)
 
@@ -100,8 +101,8 @@ with tab2:
     ax5.set_title("Infrastructure vs Total Score")
     st.pyplot(fig5)
     st.markdown("""
-    **Insight:**  
-    Stronger digital infrastructure correlates with higher AI readiness scores.  
+    **Insight:**
+    Stronger digital infrastructure correlates with higher AI readiness scores.
     However, some countries with modest infrastructure still perform well due to strong education, governance, or innovation hubs.
     """)
 
@@ -111,8 +112,8 @@ with tab2:
     ax6.set_title("AI Readiness by Income Group")
     st.pyplot(fig6)
     st.markdown("""
-    **Insight:**  
-    Income is a strong but not absolute determinant of AI readiness.  
+    **Insight:**
+    Income is a strong but not absolute determinant of AI readiness.
     While high-income countries dominate, certain lower-income countries are innovating rapidly and closing the gap.
     """)
 
@@ -122,8 +123,8 @@ with tab2:
     ax7.set_title("Research Score by Region")
     st.pyplot(fig7)
     st.markdown("""
-    **Insight:**  
-    Europe and Asia-Pacific lead in research intensity, with strong academic networks and public funding.  
+    **Insight:**
+    Europe and Asia-Pacific lead in research intensity, with strong academic networks and public funding.
     Other regions may benefit from increased investment in university-industry partnerships.
     """)
 
@@ -133,8 +134,8 @@ with tab2:
     ax8.set_title("Development Score by Region")
     st.pyplot(fig8)
     st.markdown("""
-    **Insight:**  
-    Development measures real-world execution of AI strategies.  
+    **Insight:**
+    Development measures real-world execution of AI strategies.
     While some countries rank high on policy, they lag in development, indicating a need for cross-sector collaboration and private sector enablement.
     """)
 
@@ -144,9 +145,9 @@ with tab2:
     ax9.set_title("Talent vs Total Score")
     st.pyplot(fig9)
     st.markdown("""
-    **Insight:**  
-    Talent is a major driver of AI readiness.  
-    Nations that invest in STEM education and attract skilled AI professionals perform better overall.  
+    **Insight:**
+    Talent is a major driver of AI readiness.
+    Nations that invest in STEM education and attract skilled AI professionals perform better overall.
     This plot highlights how building human capital accelerates readiness.
     """)
 
@@ -168,19 +169,19 @@ with tab4:
 
     ### Recommendations:
 
-    1. **Invest in Talent Development**  
+    1. **Invest in Talent Development**
        Focus on education and workforce readiness.
 
-    2. **Strengthen Infrastructure**  
+    2. **Strengthen Infrastructure**
        Support data, compute, and connectivity foundations.
 
-    3. **Translate Strategy into Action**  
+    3. **Translate Strategy into Action**
        Ensure policies have timelines, KPIs, and measurable outcomes.
 
-    4. **Promote Research Collaboration**  
+    4. **Promote Research Collaboration**
        Bridge academia, industry, and government.
 
-    5. **Monitor and Adjust**  
+    5. **Monitor and Adjust**
        Evaluate readiness periodically to refine strategy.
 
     ### Future Work:
